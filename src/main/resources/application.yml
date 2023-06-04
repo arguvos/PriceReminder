@@ -1,0 +1,19 @@
+micronaut:
+  application:
+    name: demo1
+datasources:
+  default:
+    jdbcUrl: ${DATASOURCES_JDBC_URL:jdbc:postgresql:pricereminder}
+    username: ${DATASOURCES_USERNAME:postgres}
+    password: ${DATASOURCES_PASSWORD:postgres}
+    driverClassName: org.postgresql.Driver
+netty:
+  default:
+    allocator:
+      max-order: 3
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update

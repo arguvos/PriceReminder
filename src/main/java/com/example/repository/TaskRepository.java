@@ -1,6 +1,6 @@
-package com.example.repositorys;
+package com.example.repository;
 
-import com.example.models.Task;
+import com.example.model.Task;
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.repository.CrudRepository;
 

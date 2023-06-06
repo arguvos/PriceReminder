@@ -1,4 +1,4 @@
-package com.example.service;
+package com.example.service.statemachine;
 
 public class BotCommand {
     public static final String INFO = "/info";

@@ -22,7 +22,6 @@ import java.util.Optional;
 public class BotService extends TelegramLongPollingBot {
     private static final String BOT_TOKEN = "BOT_TOKEN";
     private static final String BOT_USERNAME = "BOT_USERNAME";
-    @Setter
     @Inject
     private List<PackageState> allStates;
 

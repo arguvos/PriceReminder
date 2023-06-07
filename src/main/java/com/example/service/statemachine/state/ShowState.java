@@ -17,7 +17,7 @@ public class ShowState implements PackageState {
     }
     @Override
     public Optional<String> updateState(BotContext ctx) {
-        Iterable<Task> allTask = taskRepository.findAll();
+        Iterable<Task> allTask = taskRepository.findAllByUserId(ctx.getMessage().getFrom().getId());
         StringBuilder answer = new StringBuilder();
         for (Task task : allTask) {
             answer.append("ID: ").append(task.getId()).append("\n")

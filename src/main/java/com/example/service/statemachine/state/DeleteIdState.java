@@ -3,9 +3,11 @@ package com.example.service.statemachine.state;
 import com.example.repository.TaskRepository;
 import com.example.service.statemachine.BotMessage;
 import com.example.service.statemachine.BotContext;
+import jakarta.inject.Singleton;
 
 import java.util.Optional;
 
+@Singleton
 public class DeleteIdState implements PackageState {
     private final TaskRepository taskRepository;
 

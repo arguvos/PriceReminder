@@ -6,7 +6,6 @@ import com.example.service.statemachine.state.PackageState;
 import io.micronaut.context.annotation.Context;
 import jakarta.annotation.PostConstruct;
 import jakarta.inject.Inject;
-import lombok.Setter;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -14,7 +13,9 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -22,10 +23,9 @@ import java.util.Optional;
 public class BotService extends TelegramLongPollingBot {
     private static final String BOT_TOKEN = "BOT_TOKEN";
     private static final String BOT_USERNAME = "BOT_USERNAME";
+    private final Map<Long, BotContext> IdBotContextMap = new HashMap<>();
     @Inject
     private List<PackageState> allStates;
-
-    private BotContext botContext;
 
     public BotService() throws TelegramApiException {
         super(System.getenv(BOT_TOKEN));
@@ -35,7 +35,7 @@ public class BotService extends TelegramLongPollingBot {
 
     @PostConstruct
     public void init() {
-         botContext = new BotContext(new BaseState(), allStates);
+
     }
 
     @Override
@@ -49,7 +49,10 @@ public class BotService extends TelegramLongPollingBot {
         var user = msg.getFrom();
         var id = user.getId();
 
-        Optional<String> answer = botContext.update(update.getMessage());
+        if (!IdBotContextMap.containsKey(id)) {
+            IdBotContextMap.put(id, new BotContext(new BaseState(), allStates));
+        }
+        Optional<String> answer = IdBotContextMap.get(id).update(update.getMessage());
         answer.ifPresent(s -> sendText(id, s));
     }
 

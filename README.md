@@ -1,4 +1,4 @@
-# PriceReminder
+# PriceReminder [![Java CI with Maven](https://github.com/arguvos/PriceReminder/actions/workflows/build.yml/badge.svg)](https://github.com/arguvos/PriceReminder/actions/workflows/build.yml)
 PriceReminder is a telegram bot. It is designed to track changes in information on sites. For example, on the website of the market, the thing you are interested in is not currently on sale. And when it becomes available again, you would like to be notified. Using this bot, you can subscribe to any information on the site and receive a notification when it changes.
 
 The bot is available in telegram at the following link: https://t.me/alert_change_bot

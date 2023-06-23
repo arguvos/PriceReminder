@@ -1,0 +1,4 @@
+cron:
+  - description: "check all task, and notify user if value changed"
+    url: /tasks/execute
+    schedule: every 1 hours

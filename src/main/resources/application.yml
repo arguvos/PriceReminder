@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: demo1
+    name: pricereminder
 datasources:
   default:
     jdbcUrl: ${DATASOURCES_JDBC_URL:jdbc:postgresql:pricereminder}
